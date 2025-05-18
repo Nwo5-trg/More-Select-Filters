@@ -70,7 +70,7 @@ std::string trimDuplicates(const std::string& input) {
         auto substr = input.substr(start, comma - start);
         if (substr != "" && !uniqueEntries.contains(substr)) {
             uniqueEntries.insert(substr);
-            output += start == 0 ? "" : "," + substr;
+            output += (start == 0 ? "" : ",") + substr;
         }
         if (comma == std::string::npos) break;
         start = comma + 1;
