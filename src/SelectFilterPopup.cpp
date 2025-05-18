@@ -179,6 +179,7 @@ void MoreSelectFiltersPopup::onCopyFromObject(CCObject* sender) {
             input->setString(input->getString() + string);
         }
         trimTextInput(filter);
+        input->setString(trimDuplicates(input->getString()));
     }
 }
 

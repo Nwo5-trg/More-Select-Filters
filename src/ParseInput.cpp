@@ -60,3 +60,20 @@ std::vector<std::string> getStringVector(const std::string& input) {
     }
     return stringVector;
 }
+
+std::string trimDuplicates(const std::string& input) {
+    std::unordered_set<std::string> uniqueEntries;
+    std::string output = "";
+    auto start = 0;
+    while (true) {
+        auto comma = input.find(',', start);
+        auto substr = input.substr(start, comma - start);
+        if (substr != "" && !uniqueEntries.contains(substr)) {
+            uniqueEntries.insert(substr);
+            output += start == 0 ? "" : "," + substr;
+        }
+        if (comma == std::string::npos) break;
+        start = comma + 1;
+    }
+    return output;
+}

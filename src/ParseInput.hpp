@@ -23,3 +23,4 @@ std::string floatToFormattedString(float num);
 std::vector<int> getIntVector(const std::string& input);
 std::vector<TypedFloat> getTypedFloatVector(const std::string& input);
 std::vector<std::string> getStringVector(const std::string& input);
+std::string trimDuplicates(const std::string& input);
