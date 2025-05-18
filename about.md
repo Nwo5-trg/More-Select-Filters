@@ -10,6 +10,7 @@ other than everything in the fitler menu there are 3 buttons
 
 - the left button** clears every filter input
 - the ok button saves your filter
+- the right toggle disables filters
 - the right button is a shortcut to select all objects
 
 in the actual filter menu

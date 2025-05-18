@@ -17,6 +17,7 @@ struct Filter {
 };
 
 extern std::vector<Filter> currentFilter;
+extern bool filtersEnabled;
 
 class MoreSelectFiltersPopup : public geode::Popup<> {
 public:
@@ -30,7 +31,8 @@ public:
     void onSaveValuesAndExit(CCObject* sender);
     void onClearAll(CCObject* sender);
     void onSelectAll(CCObject* sender);
-    
+    void onToggleFilters(CCObject* sender);
+
     TextInput* getTextInput(const std::string& id);
     TextInput* getTextInput(CCObject* button);
     void trimTextInput(const std::string& id);

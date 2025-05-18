@@ -1,3 +1,6 @@
+## v1.0.2
+- **Added** toggle all filters button
+
 ## v1.0.1
 - **Added** slight optimisation when no filters selected
 

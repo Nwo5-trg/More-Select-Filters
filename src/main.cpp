@@ -116,20 +116,25 @@ class $modify(EditUI, EditorUI) {
     }
 
     void selectObject(GameObject* p0, bool p1) {
-        if (validObject(p0, currentFilter)) EditorUI::selectObject(p0, p1);
+        if (filtersEnabled) {
+            if (validObject(p0, currentFilter)) EditorUI::selectObject(p0, p1);
+
+        } else EditorUI::selectObject(p0, p1);
     }
-    
+
     void selectObjects(CCArray* p0, bool p1) {
-        auto validObjectsArray = CCArray::create();
-        auto filter = currentFilter;
-        for (auto obj : CCArrayExt<GameObject*>(p0)) if (validObject(obj, filter)) validObjectsArray->addObject(obj);
-        if (validObjectsArray->count() > 0) EditorUI::selectObjects(validObjectsArray, p1);
+        if (filtersEnabled) {
+            auto validObjectsArray = CCArray::create();
+            auto filter = currentFilter;
+            for (auto obj : CCArrayExt<GameObject*>(p0)) if (validObject(obj, filter)) validObjectsArray->addObject(obj);
+            if (validObjectsArray->count() > 0) EditorUI::selectObjects(validObjectsArray, p1);
+        } else EditorUI::selectObjects(p0, p1);
     }
 };
 
 class $modify(Editor, LevelEditorLayer) {
     void removeObject(GameObject* p0, bool p1) {
-        if (!p1) {
+        if (filtersEnabled && !p1) {
             if (validObject(p0, currentFilter)) LevelEditorLayer::removeObject(p0, p1);
         } else LevelEditorLayer::removeObject(p0, p1);
     }

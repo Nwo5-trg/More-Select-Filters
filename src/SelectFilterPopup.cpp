@@ -5,6 +5,7 @@
 using namespace geode::prelude;
 
 std::vector<Filter> currentFilter;
+bool filtersEnabled = true;
 
 MoreSelectFiltersPopup* MoreSelectFiltersPopup::create() { 
     auto ret = new MoreSelectFiltersPopup();
@@ -39,6 +40,13 @@ bool MoreSelectFiltersPopup::setup() {
     selectAllButton->setScale(0.75f);
     selectAllButton->m_baseScale = 0.75f;
     mainMenu->addChild(selectAllButton);
+
+    auto disableFiltersToggle = CCMenuItemToggler::create(CCSprite::createWithSpriteFrameName("GJ_checkOff_001.png"),
+    CCSprite::createWithSpriteFrameName("GJ_checkOn_001.png"), this, menu_selector(MoreSelectFiltersPopup::onToggleFilters));
+    disableFiltersToggle->toggle(!filtersEnabled);
+    disableFiltersToggle->setPosition(290.0f, 25.0f);
+    disableFiltersToggle->setScale(0.75f);
+    mainMenu->addChild(disableFiltersToggle);
     
     auto filtersContainer = CCNode::create();
     filtersContainer->setPosition(0.0f, 0.0f);
@@ -196,6 +204,10 @@ void MoreSelectFiltersPopup::onSelectAll(CCObject* sender) {
     auto editor = EditorUI::get();
     editor->selectObjects(LevelEditorLayer::get()->m_objects, true);
     editor->updateButtons();
+}
+
+void MoreSelectFiltersPopup::onToggleFilters(CCObject* sender) {
+    filtersEnabled = !filtersEnabled;
 }
 
 void MoreSelectFiltersPopup::saveValues() { // every filter obj has its own != thing cuz easier
