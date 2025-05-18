@@ -1,0 +1,16 @@
+{
+	"geode": "4.4.0",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074"
+	},
+	"id": "nwo5.more_select_filters",
+	"name": "More Select Filters",
+	"version": "v1.0.0",
+	"developer": "Nwo5",
+	"description": "Adds a new menu with more select filters.",
+	"tags": ["utility", "editor", "enhancement", "offline"],
+	"resources": {"sprites": ["resources/*.png"]}
+}
