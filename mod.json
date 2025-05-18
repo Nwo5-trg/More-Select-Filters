@@ -12,5 +12,7 @@
 	"developer": "Nwo5",
 	"description": "Adds a new menu with more select filters.",
 	"tags": ["utility", "editor", "enhancement", "offline"],
-	"resources": {"sprites": ["resources/*.png"]}
+	"resources": {
+		"sprites": ["resources/*.png"]
+	}
 }
