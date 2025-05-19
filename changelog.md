@@ -1,3 +1,6 @@
+## v1.0.3
+- **Fixed** fix the select filter system like actually
+
 ## v1.0.2
 - **Added** toggle all filters button
 

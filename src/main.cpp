@@ -5,14 +5,13 @@
 
 using namespace geode::prelude;
 
-bool validObject(GameObject* obj, const std::vector<Filter>& filterVector) {
+bool validObject(GameObject* obj, const std::vector<Filter>& filterVector) { //ts so unoptimised bro
     if (filterVector.empty()) return true;
     std::unordered_map<std::string, bool> validTypesEquals {{"object id", false}, {"group", false}, {"layer", false}, 
     {"z order", false}, {"color", false}, {"scale", false}, {"hsv", false}, {"type", false}};
     std::unordered_map<std::string, int> lastFilterIndex;
     for (int i = 0; i < filterVector.size(); i++) lastFilterIndex[filterVector[i].type] = i;
-
-    int i = 0;
+    int i = -1;
 
     auto validFilter = [&i, &validTypesEquals, &lastFilterIndex, &filterVector] (const Filter& filter, bool condition) -> bool {
         if (condition && !filter.notEquals) {
@@ -25,7 +24,8 @@ bool validObject(GameObject* obj, const std::vector<Filter>& filterVector) {
     };
 
     for (auto& filter : filterVector) {
-        if (validTypesEquals.at(filter.type) == true) continue;
+        i++;
+        if (validTypesEquals.at(filter.type)) continue;
         if (filter.type == "object id") {
             if (!validFilter(filter, obj->m_objectID == filter.intVal)) return false;
         }
@@ -95,7 +95,6 @@ bool validObject(GameObject* obj, const std::vector<Filter>& filterVector) {
             else if (filter.stringVal == "solid" && obj->m_objectType == GameObjectType::Solid) matched = true;
             if (!validFilter(filter, matched)) return false;
         }
-        i++;
     }
     return true;
 }
