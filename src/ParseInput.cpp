@@ -17,7 +17,7 @@ std::vector<int> getIntVector(const std::string& input) {
         auto substr = input.substr(start, comma - start);
         if (substr != "") {
             if (intTypesMap.contains(substr)) intVector.emplace_back(intTypesMap.at(substr));
-            else intVector.emplace_back(abs(std::strtol(substr.c_str(), nullptr, 10)));
+            else intVector.emplace_back(std::strtol(substr.c_str(), nullptr, 10));
         }
         if (comma == std::string::npos) break;
         start = comma + 1;
