@@ -1,3 +1,6 @@
+## v1.0.5
+- **Fixed** copy values copying over "0" groups
+
 ## v1.0.4
 - **Fixed** whoops was saving abs
 

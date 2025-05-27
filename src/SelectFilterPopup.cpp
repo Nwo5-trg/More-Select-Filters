@@ -139,7 +139,7 @@ void MoreSelectFiltersPopup::onCopyFromObject(CCObject* sender) {
         else if (filter == "group") {
             if (auto groups = obj->m_groups) {
                 for (auto group : *groups) {
-                    input->setString(input->getString() + "," + std::to_string(group));
+                    if (group != 0) input->setString(input->getString() + "," + std::to_string(group));
                 }
             }
         }
