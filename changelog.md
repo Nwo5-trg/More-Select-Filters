@@ -1,4 +1,6 @@
 ## v1.0.5
+- **Added** new logo
+
 - **Fixed** copy values copying over "0" groups
 
 ## v1.0.4
