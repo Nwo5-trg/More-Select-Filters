@@ -1,3 +1,6 @@
+## v1.0.6
+- **Added** source
+
 ## v1.0.5
 - **Added** new logo
 
